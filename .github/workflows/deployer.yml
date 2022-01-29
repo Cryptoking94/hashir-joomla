@@ -1,0 +1,22 @@
+
+name: Continues Deployment
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Deploy to EC2_server
+      uses: appleboy/ssh-action@master
+      with:
+        host: 15.206.210.228
+        username: ${{ secrets.TARGET_USER }}
+        key: ${{ secrets.PRIVATE_KEY }}
+        port: 22
+        script: |
+          cd /var/www/html/joomla/
+          sudo git pull origin master
+          sudo systemctl  restart apache2
