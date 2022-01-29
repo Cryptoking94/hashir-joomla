@@ -1,6 +1,5 @@
 <?php
 echo gethostname();
-echo gethostname();
 
 /**
  * @package    Joomla.Site
