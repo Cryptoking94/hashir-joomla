@@ -1,0 +1,21 @@
+name: Continues Deployment Development
+
+on:
+  push:
+    branches: [ Dev ]
+
+jobs:
+:wq!  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Deploy to EC2_server
+      uses: appleboy/ssh-action@master
+      with:
+        host: 15.206.210.228
+        username: ${{ secrets.TARGET_USER }}
+        key: ${{ secrets.PRIVATE_KEY }}
+        port: 22
+        script: |
+          cd /develop
+          sudo git pull origin Dev
+          sudo systemctl  restart apache2
