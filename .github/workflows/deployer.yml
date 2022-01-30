@@ -1,4 +1,3 @@
-
 name: Continues Deployment
 
 on:
@@ -13,10 +12,15 @@ jobs:
       uses: appleboy/ssh-action@master
       with:
         host: 15.206.210.228
-        username: joomla
+        username: ${{ secrets.TARGET_USER }}
         key: ${{ secrets.PRIVATE_KEY }}
         port: 22
         script: |
-          cd /var/www/html/joomla/
-          sudo git pull origin master
-          sudo systemctl  restart apache2
+	            ssh -i /home/joomla/production.pem ubuntu@10.0.40.110 << EOF
+	            sudo su - joomlaproduction
+              cd /var/www/html/joomla/
+              sudo git pull origin master
+              sudo systemctl  restart apache2
+              logout
+              logout
+              EOF
