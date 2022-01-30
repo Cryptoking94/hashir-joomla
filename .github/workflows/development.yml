@@ -1,11 +1,11 @@
-name: Continues Deployment Development
+name: Continues Deployment
 
 on:
   push:
     branches: [ Dev ]
 
 jobs:
-    deploy:
+  deploy:
     runs-on: ubuntu-latest
     steps:
     - name: Deploy to EC2_server
