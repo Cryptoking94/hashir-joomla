@@ -1,5 +1,9 @@
 <?php
+<<<<<<< HEAD
 echo gethostname();
+=======
+
+>>>>>>> master
 /**
  * @package    Joomla.Site
  *
