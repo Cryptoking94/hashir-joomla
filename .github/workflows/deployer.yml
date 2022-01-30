@@ -16,11 +16,11 @@ jobs:
         key: ${{ secrets.PRIVATE_KEY }}
         port: 22
         script: |
-	            ssh -i /home/joomla/production.pem ubuntu@10.0.40.110 << EOF
-	            sudo su - joomlaproduction
-              cd /var/www/html/joomla/
-              sudo git pull origin master
-              sudo systemctl  restart apache2
-              logout
-              logout
-              EOF
+	  ssh -i /home/joomla/production.pem ubuntu@10.0.40.110 << EOF
+	  sudo su - joomlaproduction
+          cd /var/www/html/joomla/
+          sudo git pull origin master
+          sudo systemctl  restart apache2
+          logout
+          logout
+          EOF
